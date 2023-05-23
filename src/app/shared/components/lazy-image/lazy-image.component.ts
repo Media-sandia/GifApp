@@ -5,10 +5,18 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './lazy-image.component.html'
 })
 export class LazyImageComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
+ 
   @Input()
-  public url!: string;
+  public url!: string; 
+  @Input()
+  public alt: string = ''; 
+
+  public hasLoaded : boolean = false
+
+  ngOnInit(): void {
+    if(!this.url) throw new Error('URL property is required');
+  }
+  onLoad(){
+    this.hasLoaded = true;
+  }
 }
